@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: rgb(44, 44, 44);
+            font-family: system-ui;
+            color: white;
+        }
+
+        #stylized input {
+            display: block;
+            font-size: 20px;
+            padding: 4px 2px;
+            border: solid 1px #aacfe4;
+            width: 70px;
+            margin: 2px 0 20px 10px;
+        }
+
+        .nav {
+            background-color: rgba(4, 4, 4, 0.429);
+            color: white;
+            width: cover;
+            text-align: center;
+            padding: 8px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <h1><a href="/">ILS Control Panel</a></h1>
+    </div>
+    <center>
+        <h2>You are currently in pattern mode.</h2>
+        <form action="/commit" id="update_request_form">
+            <label for="pattern">Pattern</label>
+            <br>
+            <select name="pattern" id="pattern" form="update_request_form">
+                <option value="rainbow">Rainbow</option>
+            </select>
+            <br><br>
+            <label for="brightness">Brightness</label>
+            <br>
+            <input type="range" id="brightness" name="brightness" min="0" max="255"/>
+            <br><br>
+            <input type="submit" value="Update" />
+        </form>
+    </center>
+</body>
+
+</html>

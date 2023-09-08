@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: rgb(44, 44, 44);
+            font-family: system-ui;
+        }
+
+        a {
+            display: block;
+        }
+
+        a:hover {
+            background-color: aquamarine;
+        }
+
+        .nav {
+            background-color: rgba(4, 4, 4, 0.429);
+            color: white;
+            width: cover;
+            text-align: center;
+            padding: 8px;
+        }
+
+        .box-elem {
+            width: auto;
+            height: auto;
+            color: white;
+            text-align: center;
+            font-size: 30px;
+            margin: 8px;
+            border: 4px;
+            border-color: rgb(33, 33, 33);
+            border-style: double;
+            border-radius: 8px;
+            background-color: rgb(0, 18, 106);
+        }
+
+        .parent {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <h1><a href="/">ILS Control Panel</a></h1>
+    </div>
+    <div class="parent">
+        <a href="/static">
+            <div class="box-elem">
+                <h1>Static</h1>
+            </div>
+        </a>
+        <a href="/pattern">
+            <div class="box-elem">
+                <h1>Pattern</h1>
+            </div>
+        </a>
+    </div>
+</body>
+
+</html>
