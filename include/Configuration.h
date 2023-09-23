@@ -20,8 +20,8 @@
 
 // Change these as necessary.
 // Note that we only support 2.4Ghz.
-const char *SSID = "ILS_LED_WRK";
-const char *PASS = "YVNGFL3X";
+const char *SSID = "CAN-LS";
+const char *PASS = "John0343";
 
 AsyncWebServer Server(80);
 CRGB LEDs[NUM_LEDS];

@@ -14,10 +14,15 @@ void setup() {
   }
     
   // Setup AP.
-  WiFi.mode(WIFI_AP);
-  WiFi.softAP(SSID, PASS);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(SSID, PASS);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+  }
+
   Serial.print("Connect to AP, then go to this IP: ");
-  Serial.println(WiFi.softAPIP());
+  Serial.println(WiFi.localIP());
   
   FastLED.addLeds<WS2812B, DATA_PIN, GRB>(LEDs, NUM_LEDS);
   FastLED.setBrightness(BRIGHTNESS_MAX);
@@ -97,10 +102,12 @@ void FetchAndReturnPage(AsyncWebServerRequest* request, const char *path) {
 }
 
 void HandleCommitRequest(AsyncWebServerRequest* request) {
+  Serial.println("CAUGHT!");
   if (Work->Mode == STATIC) {
     if (request->hasParam("color")) {
       uint32_t RequestedColor = strtoul(request->getParam("color")->value().substring(1).c_str(), NULL, 16);
       if (RequestedColor >= 0x000000 && RequestedColor <= 0xFFFFFF) {
+        Serial.println(RequestedColor);
         Work->Color = RequestedColor;
         Work->ColorUpdate = true;
       }
@@ -131,5 +138,5 @@ void InitializeWork() {
 
 void rainbow_wave(uint8_t thisSpeed, uint8_t deltaHue) {
   uint8_t thisHue = beatsin8(thisSpeed, 0, 0xFF);
-  fill_rainbow(LEDs, NUM_LEDS, thisHue, deltaHue);
+  fill_rainbow(LEDs, NUM_LEDS, thisHue, 0);
 }
